@@ -24,27 +24,42 @@ public class mail {
 		String result1="";
 		String result2="";
 		for(int i=0;i<s.length()-1;i++){
-			String temp=String.valueOf(s.charAt(i));//输入字符串
-			int num=Integer.parseInt(temp);//数组下标
+			String temp=String.valueOf(s.charAt(i));
+			int num=Integer.parseInt(temp);
+			
 			if(s.charAt(i)==s.charAt(i+1)){
 					count++;
 			}
 			else{
-				if(s.charAt(i)=='0'){
-					for (int x=0;x<count;x++){
-						result1 += " ";
-					}
-				}
-				else{
-					result1 +=String.valueOf(list[num-1].charAt(count));
+			    if(s.charAt(i)=='0'){
+				
+				for(int a=0;a<count;a++){
+				    result1+=" ";
 				}
 				count=0;
+			    }
+			   else {
+			       	result1 +=String.valueOf(list[num-1].charAt(count));
+				count=0;
+			    }
 			}
 		}
-		if(s.charAt(s.length()-1)!=s.charAt(s.length()-2)){//末尾
-			int x=Character.getNumericValue(s.charAt(s.length()-1));
-			result2=String.valueOf(list[x-1].charAt(0));
+		//	if(s.charAt(s.length()-1)!=s.charAt(s.length()-2)){
+		if(s.charAt(s.length()-1)!='0'){
+		    int x=Character.getNumericValue(s.charAt(s.length()-1));
+		    result2+=String.valueOf(list[x-1].charAt(count));
 		}
+		else{
+		    for(int a=0;a<count;a++){
+			result2+=" ";
+		    }
+		}
+			    //	}
+			    /*	else{
+			    int x=Character.getNumericValue(s.charAt(s.length()-1));
+			    result2+=String.valueOf(list[x-1].charAt(count));
+			   
+			    }*/
 			
 		return result1+result2;
 	}
